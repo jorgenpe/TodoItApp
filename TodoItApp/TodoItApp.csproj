@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\PersonSequencer.cs" />
+    <Compile Include="Data\TodoSequencer.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Program.cs" />
