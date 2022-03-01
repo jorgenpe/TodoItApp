@@ -13,11 +13,11 @@ namespace TodoItApp.Models
         private string lastName;
 
 
-        Person(int personId) 
+        public Person(int personId) 
         {
             this.personId = personId;                                                                                                       
         }
-        Person(int personId, string firstName, string lastName) 
+        public Person(int personId, string firstName, string lastName) 
         {
             this.personId = personId;
             this.firstName = firstName;
