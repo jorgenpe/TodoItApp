@@ -25,8 +25,37 @@ namespace TodoItApp.Models
         }
         public int PersonId { get { return personId; }  }   
         
-        public string FirstName { get { return firstName;}set { this.firstName =value; } }
+        public string FirstName { get { return firstName;}
+            set
+            {
+                if (value.Trim() == null || value.Trim() == "")
+                {
+                    throw new ArgumentNullException("The first name can't be empty or null!");
+                }
+                else
+                {
+                    this.firstName = value.Trim();
+                }
+            }
+        }
 
-        public String LastName { get { return lastName;}set { this.lastName =value; } }
+        public string LastName
+        {
+            get { return lastName; }
+            set
+            {
+                if (value.Trim() == null || value.Trim() == "")
+                {
+                    throw new ArgumentNullException("The last name can't be empty or null!");
+                }
+                else
+                {
+                    this.lastName = value.Trim();
+                }
+            }
+        }
+        public string FullName { get { return $"{firstName} {lastName}"; } }    
+
+       
     }
 }
