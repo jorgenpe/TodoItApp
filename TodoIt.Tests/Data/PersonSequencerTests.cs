@@ -15,6 +15,8 @@ namespace TodoIt.Tests.Data
             Assert.NotEqual(0, PersonSequencer.NextPersonId());
             PersonSequencer.Reset();
             Assert.Equal(1, PersonSequencer.NextPersonId());
+            Assert.Equal(2, PersonSequencer.NextPersonId());
+            Assert.Equal(3, PersonSequencer.NextPersonId());
         }
     }
 }
