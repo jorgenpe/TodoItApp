@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\PeopleService.cs" />
     <Compile Include="Data\PersonSequencer.cs" />
     <Compile Include="Data\TodoSequencer.cs" />
     <Compile Include="Models\Todo.cs" />
