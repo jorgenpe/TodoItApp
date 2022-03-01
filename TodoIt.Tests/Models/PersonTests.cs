@@ -43,7 +43,6 @@ namespace TodoIt.Tests
         public void TestFirstNameThrowsNullReferenceException()
         {
             //Arrange
-            string expected = "The first name can't be empty or null!";
             Person person = new Person(1, "testFirstName", "testLastname");
             string firstName = null;
             //Act and Assert
