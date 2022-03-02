@@ -118,10 +118,7 @@ namespace TodoItApp.Data
             return false;
         }
 
-
         public void Clear() { todos = new Todo[0]; }
-
-        
 
     }
 }
