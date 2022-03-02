@@ -43,6 +43,20 @@ namespace TodoItApp.Data
             return person;
         }
 
+        public bool RemovePersonById(int personId)
+        {
+            for (int i = 0; i < persons.Length; i++)
+            {
+                if (persons[i].PersonId == personId)
+                {
+                    persons[i] = persons[persons.Length - 1];
+                    Array.Resize<Person>(ref persons, persons.Length - 1);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void Clear()
         {
             persons = new Person[0];
