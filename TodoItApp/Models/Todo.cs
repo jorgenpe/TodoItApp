@@ -8,7 +8,7 @@ namespace TodoItApp.Models
 {
     public class Todo
     {
-        private int todoId;
+        private readonly int todoId;
         private string description;
         private bool done;
         private Person assignee;

@@ -9,6 +9,7 @@ namespace TodoIt.Tests
         [Fact]
         public void PersonIdTest()
         {
+            //Arrange
             Person person = new Person(1);
             int testValue = 0;
             Assert.NotEqual(testValue, person.PersonId);

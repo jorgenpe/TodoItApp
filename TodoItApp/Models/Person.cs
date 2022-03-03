@@ -8,7 +8,7 @@ namespace TodoItApp.Models
 {
     public class Person
     {
-        private int personId;
+        private readonly int personId;
         private string firstName;
         private string lastName;
 
