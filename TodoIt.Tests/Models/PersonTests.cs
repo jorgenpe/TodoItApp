@@ -19,6 +19,7 @@ namespace TodoIt.Tests
         public void PersonFirstNameTest()
         {
             Person person = new Person(1);
+            Person personTwo = new Person(1);
             person.FirstName = "Test";
             string result = "Test";
             Assert.NotNull(person.FirstName);

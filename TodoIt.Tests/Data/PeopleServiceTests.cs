@@ -30,15 +30,16 @@ namespace TodoIt.Tests.Data
             
             PeopleService personService = new PeopleService();
             personService.Clear();
-
-            Assert.Equal(0, personService.FindAll().Length);
+            int expected = 0;
+            int notExpected = 0;
+            Assert.Equal(expected, personService.FindAll().Length);
             
             personService.CreatePerson("firstNameOne", "lastNameOne");
             personService.CreatePerson("firstNametwo", "lastNameTwo");
             personService.CreatePerson("firstNameThree", "lastNameThree");
             personService.CreatePerson("firstNameFour", "lastNameFour");
-            Assert.NotEqual(0, personService.FindAll().Length);
-            Assert.Equal(4, personService.FindAll().Length);
+            Assert.NotEqual(notExpected, personService.FindAll().Length);
+            Assert.Equal(personService.Size(), personService.FindAll().Length);
         }
 
         [Fact]
@@ -60,9 +61,8 @@ namespace TodoIt.Tests.Data
             Assert.Equal(2, result.PersonId);
         }
 
-
         [Fact]
-        public void ClearTest()
+        public void RemoveById()
         {
             PersonSequencer.Reset();
 
@@ -74,7 +74,27 @@ namespace TodoIt.Tests.Data
             personService.CreatePerson("firstNameThree", "lastNameThree");
             personService.CreatePerson("firstNameFour", "lastNameFour");
 
+            Assert.False(personService.RemovePersonById(200));
+            Assert.True(personService.RemovePersonById(2));
+        }
+
+
+        [Fact]
+        public void ClearTest()
+        {
+            PersonSequencer.Reset();
+
+            PeopleService personService = new PeopleService();
+            personService.Clear();
+
+            Person result = personService.CreatePerson("firstNameOne", "lastNameOne");
+            personService.CreatePerson("firstNametwo", "lastNameTwo");
+            personService.CreatePerson("firstNameThree", "lastNameThree");
+            personService.CreatePerson("firstNameFour", "lastNameFour");
+
             Assert.NotEqual(0, personService.Size());
+            Assert.Equal("firstNameOne", result.FirstName);
+            Assert.Equal("lastNameOne", result.LastName);
             personService.Clear();
             Assert.NotNull(personService);
             Assert.Equal(0, personService.FindAll().Length);

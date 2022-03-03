@@ -56,7 +56,8 @@ namespace TodoItApp.Data
             {
                 if(doneStatus == todos[i].Done)
                 {
-                    tempTodo.Append(todos[i]);
+                    tempTodo = tempTodo.Append(todos[i]).ToArray();
+                    
                 }
             }
             return tempTodo;

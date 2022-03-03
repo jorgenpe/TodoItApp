@@ -20,15 +20,15 @@ namespace TodoItApp.Models
         public Person(int personId, string firstName, string lastName) 
         {
             this.personId = personId;
-            this.firstName = firstName;
-            this.lastName = lastName;
+            FirstName = firstName;
+            LastName = lastName;
         }
         public int PersonId { get { return personId; }  }   
         
         public string FirstName { get { return firstName;}
             set
             {
-                if (value.Trim() == null || value.Trim() == "")
+                if (value == null || value.Trim() == "")
                 {
                     throw new ArgumentNullException("The first name can't be empty or null!");
                 }
@@ -44,7 +44,7 @@ namespace TodoItApp.Models
             get { return lastName; }
             set
             {
-                if (value.Trim() == null || value.Trim() == "")
+                if (value == null || value.Trim() == "")
                 {
                     throw new ArgumentNullException("The last name can't be empty or null!");
                 }
