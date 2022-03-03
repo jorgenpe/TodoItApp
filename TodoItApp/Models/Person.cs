@@ -28,9 +28,10 @@ namespace TodoItApp.Models
         public string FirstName { get { return firstName;}
             set
             {
+                
                 if (value == null || value.Trim() == "")
                 {
-                    throw new ArgumentNullException("The first name can't be empty or null!");
+                    throw new ArgumentException("The first name can't be empty or null!");
                 }
                 else
                 {
@@ -46,7 +47,7 @@ namespace TodoItApp.Models
             {
                 if (value == null || value.Trim() == "")
                 {
-                    throw new ArgumentNullException("The last name can't be empty or null!");
+                    throw new ArgumentException("The last name can't be empty or null!");
                 }
                 else
                 {

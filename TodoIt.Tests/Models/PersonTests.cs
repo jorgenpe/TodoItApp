@@ -44,11 +44,12 @@ namespace TodoIt.Tests
         public void TestFirstNameThrowsNullReferenceException()
         {
             //Arrange
+            string expected = "The first name can't be empty or null!";
             Person person = new Person(1, "testFirstName", "testLastname");
             string firstName = null;
             //Act and Assert
-            Assert.Throws<ArgumentNullException>(() => person.FirstName = firstName );
-            
+            var result = Assert.Throws<ArgumentException>(() => person.FirstName = firstName );
+            Assert.Equal(expected, result.Message);
 
         }
 
@@ -59,22 +60,24 @@ namespace TodoIt.Tests
         public void TestFirstNameThrowsException(string firstName)
         {
             //Arrange
+            string expected = "The first name can't be empty or null!";
             Person person = new Person(1, "testFirstName", "testLastname");
             //Act and Assert
-            Assert.Throws<ArgumentNullException>(() => person.FirstName = firstName);
-            
+            var result = Assert.Throws<ArgumentException>(() => person.FirstName = firstName);
+            Assert.Equal(expected, result.Message);
 
         }
         [Fact]
 
         public void TestLastNameThrowsNullReferenceException()
         {
+            string expected = "The last name can't be empty or null!";
             //Arrange
             Person person = new Person(1, "testFirstName", "testLastname");
             string lastName = null;
             //Act and Assert
-            Assert.Throws<ArgumentNullException>(() => person.LastName = lastName);
-
+            var result = Assert.Throws<ArgumentException>(() => person.LastName = lastName);
+            Assert.Equal(expected, result.Message);
 
         }
 
@@ -85,19 +88,22 @@ namespace TodoIt.Tests
         public void TestLastNameThrowsException(string lastName)
         {
             //Arrange
+            string expected = "The last name can't be empty or null!";
             Person person = new Person(1, "testFirstName", "testLastname");
             //Act and Assert
-            Assert.Throws<ArgumentNullException>(() => person.LastName = lastName);
-
+            var result = Assert.Throws<ArgumentException>(() => person.LastName = lastName);
+            Assert.Equal(expected, result.Message);
         }
 
         [Fact]
 
         public void TestPersonConstructorThrowsNullReferenceException()
         {
-                        
+            string expected = "The first name can't be empty or null!";
             //Act and Assert
-            Assert.Throws<ArgumentNullException>(() => new Person(1, null, null));
+            var result = Assert.Throws<ArgumentException>(() => new Person(1, null, null));
+
+            Assert.Equal(expected, result.Message);
 
         }
 
@@ -107,13 +113,35 @@ namespace TodoIt.Tests
 
         public void TestTwoPersonConstructorThrowsNullReferenceException(string firsName, string lastName)
         {
-
+            string expected = "The first name can't be empty or null!";
             //Act and Assert
-            Assert.Throws<ArgumentNullException>(() => new Person(1, firsName, lastName));
-
+            var result = Assert.Throws<ArgumentException>(() => new Person(1, firsName, lastName));
+            Assert.Equal(expected, result.Message);
         }
 
 
+        [Fact]
 
+        public void TestPersonConstructorLastNameThrowsNullReferenceException()
+        {
+            string expected = "The last name can't be empty or null!";
+            //Act and Assert
+            var result = Assert.Throws<ArgumentException>(() => new Person(1, "Test", null));
+
+            Assert.Equal(expected, result.Message);
+
+        }
+
+        [Theory]
+        [InlineData("Test ", "")]
+        [InlineData("Test ", " ")]
+
+        public void TestTwoPersonConstructorLastNameThrowsNullReferenceException(string firsName, string lastName)
+        {
+            string expected = "The last name can't be empty or null!";
+            //Act and Assert
+            var result = Assert.Throws<ArgumentException>(() => new Person(1, firsName, lastName));
+            Assert.Equal(expected, result.Message);
+        }        
     }
 }
