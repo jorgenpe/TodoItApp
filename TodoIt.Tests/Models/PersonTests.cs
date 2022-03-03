@@ -47,7 +47,7 @@ namespace TodoIt.Tests
             Person person = new Person(1, "testFirstName", "testLastname");
             string firstName = null;
             //Act and Assert
-            Assert.Throws<NullReferenceException>(() => person.FirstName = firstName );
+            Assert.Throws<ArgumentNullException>(() => person.FirstName = firstName );
             
 
         }
@@ -65,5 +65,55 @@ namespace TodoIt.Tests
             
 
         }
+        [Fact]
+
+        public void TestLastNameThrowsNullReferenceException()
+        {
+            //Arrange
+            Person person = new Person(1, "testFirstName", "testLastname");
+            string lastName = null;
+            //Act and Assert
+            Assert.Throws<ArgumentNullException>(() => person.LastName = lastName);
+
+
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(" ")]
+
+        public void TestLastNameThrowsException(string lastName)
+        {
+            //Arrange
+            Person person = new Person(1, "testFirstName", "testLastname");
+            //Act and Assert
+            Assert.Throws<ArgumentNullException>(() => person.LastName = lastName);
+
+        }
+
+        [Fact]
+
+        public void TestPersonConstructorThrowsNullReferenceException()
+        {
+                        
+            //Act and Assert
+            Assert.Throws<ArgumentNullException>(() => new Person(1, null, null));
+
+        }
+
+        [Theory]
+        [InlineData("", "")]
+        [InlineData(" "," ")]
+
+        public void TestTwoPersonConstructorThrowsNullReferenceException(string firsName, string lastName)
+        {
+
+            //Act and Assert
+            Assert.Throws<ArgumentNullException>(() => new Person(1, firsName, lastName));
+
+        }
+
+
+
     }
 }

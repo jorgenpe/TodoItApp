@@ -82,7 +82,7 @@ namespace TodoItApp.Data
             Todo[] tempTodo = new Todo[0];
             for (int i = 0; i < todos.Length; i++)
             {
-                if ( todos[i].Assignee.PersonId.Equals(Assignee))
+                if ( todos[i].Assignee.Equals(Assignee))
                 {
                     Array.Resize<Todo>(ref tempTodo, tempTodo.Length + 1);
                     tempTodo[tempTodo.Length - 1] = todos[i];
@@ -96,7 +96,7 @@ namespace TodoItApp.Data
             Todo[] tempTodo = new Todo[0];
             for (int i = 0; i < todos.Length; i++)
             {
-                if (todos[i].Assignee.Equals(null))
+                if (todos[i].Assignee == null)
                 {
                     Array.Resize<Todo>(ref tempTodo, tempTodo.Length + 1);
                     tempTodo[tempTodo.Length - 1] = todos[i];
